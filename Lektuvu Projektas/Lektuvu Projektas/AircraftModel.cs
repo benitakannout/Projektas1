@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lektuvu_Projektas
 {
-    internal class AircraftModel
+    public class AircraftModel
     {
         public int Id { get; set; }
         public string Number { get; set; }
