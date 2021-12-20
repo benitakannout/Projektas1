@@ -16,13 +16,21 @@ namespace Lektuvu_Projektas
 
         public ReportGenerator(AircraftModelsRepository aircraftmodelsrepository, AircraftsRepository aircraftsRepository, CompaniesRepository companiesRepository, CountriesRepository countriesRepository)
         {
-            aircraftsRepository = _aircraftsRepository;
-            aircraftmodelsrepository = _aircraftModelsRepository;
-            companiesRepository = _companiesRepository;
-            countriesRepository = _countriesRepository;
+            _aircraftsRepository = aircraftsRepository;
+            _aircraftModelsRepository = aircraftmodelsrepository;
+            _companiesRepository = companiesRepository;
+            _countriesRepository = countriesRepository;
         }
 
+        public List<ReportItem> GenerateReportAircraftInEurope(AircraftsRepository aircraftsRepository)
+        {
+            var aircrafts = aircraftsRepository.Retrieve();
 
+            foreach(var aircraft in aircrafts)
+            {
+
+            }
+        }
 
     }
 }
