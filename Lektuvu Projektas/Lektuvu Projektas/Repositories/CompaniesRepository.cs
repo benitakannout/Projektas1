@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lektuvu_Projektas.Repositories
 {
-    internal class CompaniesRepository
+    public class CompaniesRepository
     {
         private List<Company> companies = new List<Company>();
 
@@ -141,6 +141,15 @@ namespace Lektuvu_Projektas.Repositories
             companies.Add(new Company(1864, "SPIRIT AVIATION SERVICES INC", 3));
             companies.Add(new Company(1866, "ITUM CORP", 3));
             companies.Add(new Company(1867, "WORLD AVIATION LOGISTICS LLC.", 3));
+        }
+        public Company Retrieve(int Id)
+        {
+            var company = companies.FirstOrDefault(x => x.Id == Id);
+            return company;
+        }
+        public List<Company> Retrieve()
+        {
+            return companies;
         }
     }
 }

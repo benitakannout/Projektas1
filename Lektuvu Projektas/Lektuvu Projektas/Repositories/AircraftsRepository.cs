@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lektuvu_Projektas.Repositories
 {
-    internal class AircraftsRepository
+    public class AircraftsRepository
     {
         private List<Aircraft> aircrafts = new List<Aircraft>();
 
@@ -149,6 +149,14 @@ namespace Lektuvu_Projektas.Repositories
             aircrafts.Add(new Aircraft(119, 1, 1082, "SP-HAG"));
             aircrafts.Add(new Aircraft(186, 1, 1701, "LY-ONJ"));
         }
-
+        public Aircraft Retrieve(int Id)
+        {
+            var aircraft = aircrafts.FirstOrDefault(x => x.Id == Id);
+            return aircraft;
+        }
+        public List<Aircraft> Retrieve()
+        {
+            return aircrafts;
+        }
     }
 }

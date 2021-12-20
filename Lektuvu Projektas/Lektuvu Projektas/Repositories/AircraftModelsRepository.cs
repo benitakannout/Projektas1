@@ -8,7 +8,7 @@ namespace Lektuvu_Projektas.Repositories
 {
     public class AircraftModelsRepository
     {
-        private List<AircraftModel> aircraftModels = new List<AircraftModel>();
+        public List<AircraftModel> aircraftModels = new List<AircraftModel>();
 
         public AircraftModelsRepository()
         {
@@ -22,6 +22,15 @@ namespace Lektuvu_Projektas.Repositories
             aircraftModels.Add(new AircraftModel(9, "CRJ200", "Bombardier CRJ200"));
             aircraftModels.Add(new AircraftModel(10, "ATR42-300", "ATR 42-300"));
             aircraftModels.Add(new AircraftModel(11, "ATR72-200", "ATR 72-200"));
+        }
+        public AircraftModel Retrieve(int Id)
+        {
+            var aircraftModel = aircraftModels.FirstOrDefault(x => x.Id == Id);
+            return aircraftModel;
+        }
+        public List<AircraftModel> Retrieve()
+        {
+            return aircraftModels;
         }
     }
 }

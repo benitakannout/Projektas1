@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lektuvu_Projektas.Repositories
 {
-    internal class CountriesRepository
+    public class CountriesRepository
     {
         private List<Country> countryCodes = new List<Country>();
 
@@ -242,6 +242,15 @@ namespace Lektuvu_Projektas.Repositories
             countryCodes.Add(new Country(244, "SV", "El Salvador", "Central America", false));
             countryCodes.Add(new Country(245, "BO", "Bolivia", "South America", false));
             countryCodes.Add(new Country(256, "PY", "Paraguay", "South America", false));
+        }
+        public Country Retrieve(int Id)
+        {
+            var country = countryCodes.FirstOrDefault(x => x.Id == Id);
+            return country;
+        }
+        public List<Country> Retrieve()
+        {
+            return countryCodes;
         }
     }
 }
