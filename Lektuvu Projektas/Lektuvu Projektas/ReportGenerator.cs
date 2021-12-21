@@ -22,13 +22,24 @@ namespace Lektuvu_Projektas
             _countriesRepository = countriesRepository;
         }
 
-        public List<ReportItem> GenerateReportAircraftInEurope(AircraftsRepository aircraftsRepository)
+        List<int> item = new List<int>();
+        public List<ReportItem> GenerateReportAircraftInEurope(AircraftsRepository aircraftsRepository, CountriesRepository countriesRepository)
         {
             var aircrafts = aircraftsRepository.Retrieve();
 
             foreach(var aircraft in aircrafts)
             {
+                int Id = aircraft.Id;
+                var CountryId = countriesRepository.Retrieve(Id);
 
+                if(CountryId.BelongsToEU == true)
+                {
+                    item.Add(Id);
+                }
+                else if (CountryId.BelongsToEU == null)
+                {
+                    continue;
+                }
             }
         }
 

@@ -15,5 +15,6 @@ namespace Lektuvu_Projektas
         public int? CompanyCountryCode { get; set; }
         public string CompanyCountryName { get; set; }
 
+        private List<ReportItem> items = new List<ReportItem>();
     }
 }
