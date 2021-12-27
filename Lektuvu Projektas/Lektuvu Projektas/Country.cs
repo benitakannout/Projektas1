@@ -8,7 +8,7 @@ namespace Lektuvu_Projektas
 {
     public class Country
     {
-        public int Id { get; set; }
+        public int CountryId { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Continent { get; set; }
@@ -19,9 +19,9 @@ namespace Lektuvu_Projektas
 
         }
 
-        public Country(int Id, string Code, string Name, string Continent, bool BelongsToEU)
+        public Country(int CountryId, string Code, string Name, string Continent, bool? BelongsToEU)
         {
-            Id = Id;
+            CountryId = CountryId;
             Code = Code;
             Name = Name;
             Continent = Continent;

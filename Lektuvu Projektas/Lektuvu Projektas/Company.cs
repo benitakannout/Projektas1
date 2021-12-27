@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lektuvu_Projektas
 {
-    internal class Company
+    public class Company
     {
         public int Id { get; set; }
         public string Name { get; set; }

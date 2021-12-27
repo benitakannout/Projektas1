@@ -22,25 +22,49 @@ namespace Lektuvu_Projektas
             _countriesRepository = countriesRepository;
         }
 
-        List<int> item = new List<int>();
+        
         public List<ReportItem> GenerateReportAircraftInEurope(AircraftsRepository aircraftsRepository, CountriesRepository countriesRepository)
         {
             var aircrafts = aircraftsRepository.Retrieve();
+            var items = new List<ReportItem>();
 
-            foreach(var aircraft in aircrafts)
+            foreach (var aircraft in aircrafts)
             {
-                int Id = aircraft.Id;
-                var CountryId = countriesRepository.Retrieve(Id);
+                
+                var company = _companiesRepository.Retrieve(aircraft.CompanyId);
+                var country = _countriesRepository.Retrieve(company.CountryId);
+                var aircraftModel = _aircraftModelsRepository.Retrieve(aircraft.ModelId);             
 
-                if(CountryId.BelongsToEU == true)
+                if(country.Continent == "Europe")
                 {
-                    item.Add(Id);
+                    var item = new ReportItem();
+                    item.AircraftTailNumber = aircraft.TailNumber;
+                    item.ModelNumber = aircraftModel.Number;
+                    item.ModelDescription = aircraftModel.Description;
+                    item.OwnerCompanyName = company.Name;
+                    item.CompanyCountryCode = company.CountryId;
+                    item.CompanyCountryName = country.Name;
+                    item.BelongsToEU = country.BelongsToEU;
+                    item.ContinentIsEurope = true;
+                    items.Add(item);
                 }
-                else if (CountryId.BelongsToEU == null)
+                else if(country.Continent != "Europe")
                 {
-                    continue;
+                    var item = new ReportItem();
+                    item.AircraftTailNumber = aircraft.TailNumber;
+                    item.ModelNumber = aircraftModel.Number;
+                    item.ModelDescription = aircraftModel.Description;
+                    item.OwnerCompanyName = company.Name;
+                    item.CompanyCountryCode = company.CountryId;
+                    item.CompanyCountryName = country.Name;
+                    item.BelongsToEU = country.BelongsToEU;
+                    item.ContinentIsEurope = false;
+                    items.Add(item);
                 }
+
             }
+
+            return items;
         }
 
     }

@@ -243,9 +243,9 @@ namespace Lektuvu_Projektas.Repositories
             countryCodes.Add(new Country(245, "BO", "Bolivia", "South America", false));
             countryCodes.Add(new Country(256, "PY", "Paraguay", "South America", false));
         }
-        public Country Retrieve(int Id)
+        public Country Retrieve(int? Id)
         {
-            var country = countryCodes.FirstOrDefault(x => x.Id == Id);
+            var country = countryCodes.FirstOrDefault(x => x.CountryId == Id);
             return country;
         }
         public List<Country> Retrieve()
